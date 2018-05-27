@@ -12,6 +12,12 @@ inductive exp (α : Type) : Type
 notation `#` n := exp.bvr _ n 
 notation `&` n := exp.fvr _ n 
 
+def seq (α : Type) : Type := (list (exp α)) × (list (exp α))
+
+def proves (Γ Δ : list (exp α)) : seq α := ⟨Γ,Δ⟩
+
+notation Γ `==>` Δ := proves Γ Δ
+
 def fvrs : exp α → list nat
 | (exp.lam e) := fvrs e
 | (exp.app e1 e2) := fvrs e1 ++ fvrs e2 

@@ -13,6 +13,11 @@ def lst2str {α : Type} (f : α → string) : list α → string
 
 open tactic
 
+meta def dec_triv_tac : tactic unit :=
+do t ← target, 
+   to_expr ``(@of_as_true %%t) >>= apply,
+   triv
+
 meta def showmem : nat → tactic unit 
 | 0 := to_expr ``(or.inl) >>= apply >> to_expr ``(eq.refl) >>= apply >> skip
 | (n+1) := to_expr ``(or.inr) >>= apply >> showmem n
