@@ -1,15 +1,12 @@
-/-example : 1 + 2222 = 2223 :=
-begin
-  reflexivity
-end
+import lia.cooper.main
 
-theorem foo : 1 + (2222222222222 : nat)  = 2222222222223 :=
-begin
-  reflexivity
-end
--/
+set_option pp.all true
+-- lemma foo [ordered_comm_group int] : false := sorry 
 
-theorem bar : 100003 + 100003 = 200006 :=
-rfl
+-- lemma bar : false := foo 
 
+lemma foo : ∃ {a : int}, a = 5 := 
+by cooper
 
+#exit
+∀ x y, (x = y ↔ ∀ z, (x + z = y + z)), a + c ≠ b + c ⊢ a ≠ b 

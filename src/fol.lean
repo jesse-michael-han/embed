@@ -57,7 +57,6 @@ inductive thm [is_symb α] : (seq α) → Prop
 | inf : ∀ {s S}, inf S s → (∀ s' ∈ S, thm s') → thm s 
 
 
-
 /- Derived rules -/
 
 open list
@@ -287,10 +286,8 @@ meta def showgoal : tactic unit :=
 example : thm ([] ==> [∀' (pred "P" [# 0]) →' ∃' (pred "P" [# 0])]) :=
 begin
   showgoal,
-  apply thm.impr, 
-  apply thm.fal (& 0),
-  apply thm.exr (& 0),
-  apply thm.id, 
+  apply thm.impr, apply thm.fal (& 0),
+  apply thm.exr (& 0), apply thm.id, 
   showgoal
 end
 
